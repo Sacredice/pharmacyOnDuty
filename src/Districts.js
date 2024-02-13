@@ -19,7 +19,7 @@ function Districts({ search }) {
   useEffect(() => {
 
     const handleCityPharmacies = async (city) => {
-      console.log(`${city}`);
+      console.log(`${process.env.REACT_APP_COLLECTAPI_KEY}`);
       if ((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now())) {
         setCityObjs((JSON.parse(localStorage.getItem(`${city}`))[0]));
         console.log("localStore used");
@@ -31,7 +31,7 @@ function Districts({ search }) {
         try {
           const response = await axios(`https://api.collectapi.com/health/dutyPharmacy?il=${city}`, {
             headers: {
-              "authorization": "apikey 7kPhSChk7o0n9aDH4DLENR:5wv5KQr6IiwafrRJT3P6u1",
+              "authorization": process.env.REACT_APP_COLLECTAPI_KEY,
               "content-type": "application/json"
             }     
           });
