@@ -11,7 +11,7 @@ function Home({ search, setUserLocation }) {
 
 
   useEffect(() => {
-    const filteredList = cityList.filter(city => city.toLowerCase().includes(search.toLowerCase()));
+    const filteredList = cityList.filter(city => city.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
     setSearchCities(filteredList);
 
   }, [search])

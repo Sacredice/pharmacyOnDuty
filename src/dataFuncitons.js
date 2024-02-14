@@ -48,11 +48,9 @@ export const getThreeClosest = (userLocation, data) => {
             return pharmacyObj;
         });
 
-        distancePropertyAdded.sort(dynamicSort("distance"));;
+        distancePropertyAdded.sort(dynamicSort("distance"));
         return distancePropertyAdded.slice(0, 3);
-
     }
-    
 };
 
 

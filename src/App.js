@@ -15,7 +15,7 @@ function App() {
       <Header title="Nöbetçi Eczaneler" />
       <SearchBar search={search} setSearch={setSearch} />
       <Routes>
-        <Route path='/' element={<Home search={search} setUserLocation={setUserLocation} />} />
+        <Route path='/' element={<Home search={search} setUserLocation={setUserLocation} userLocation={userLocation} />} />
         <Route path='/districts/:city' element={<Districts search={search} userLocation={userLocation} setUserLocation={setUserLocation} />} />
       </Routes>
 

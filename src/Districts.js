@@ -64,8 +64,8 @@ function Districts({ search, userLocation, setUserLocation }) {
   useEffect(() => {
 
     const filteredPharmacies = cityObjs.filter((pharmacy) => 
-    (((pharmacy.dist).toLowerCase()).includes(search.toLowerCase())) ||
-    ((pharmacy.address).toLowerCase()).includes(search.toLowerCase())
+    (((pharmacy.dist).toLocaleLowerCase()).includes(search.toLocaleLowerCase())) ||
+    ((pharmacy.address).toLocaleLowerCase()).includes(search.toLocaleLowerCase())
     );
     setSearchPharmacyResults(filteredPharmacies);
     
