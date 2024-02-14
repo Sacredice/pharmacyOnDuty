@@ -8,15 +8,15 @@ import { useState } from "react";
 
 function App() {
   const [search, setSearch] = useState("");
-
+  const [userLocation, setUserLocation] = useState([]);
 
   return (
     <div className="App">
       <Header title="Nöbetçi Eczaneler" />
       <SearchBar search={search} setSearch={setSearch} />
       <Routes>
-        <Route path='/' element={<Home search={search} />} />
-        <Route path='/districts/:city' element={<Districts search={search} />} />
+        <Route path='/' element={<Home search={search} setUserLocation={setUserLocation} />} />
+        <Route path='/districts/:city' element={<Districts search={search} userLocation={userLocation} setUserLocation={setUserLocation} />} />
       </Routes>
 
     </div>
