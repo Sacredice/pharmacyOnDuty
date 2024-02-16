@@ -8,6 +8,7 @@ import { FaHome } from "react-icons/fa";
 function Home({ search, setUserLocation }) {
   const [searchCities, setSearchCities] = useState([]);
   const navigate = useNavigate();
+  
 
 
   useEffect(() => {

@@ -14,6 +14,7 @@ function Districts({ search, userLocation, setUserLocation }) {
   const navigate = useNavigate();
 
 
+
 // 2 useEffect used to prevent render component before setCityObj(arrayWithData) updated cityObjs and instead render page with
 // empty array (initial value of cityObjs) render it with updated array.
   useEffect(() => {
@@ -44,18 +45,18 @@ function Districts({ search, userLocation, setUserLocation }) {
               console.log(userLocation);
             }
             setCityObjs(response.data.result.sort(dynamicSort("dist")));
+
           }
           
         } catch (err) {
           console.log(`Error: ${err.message}`);
         } finally {
           setIsLoading(false);
+          setUserLocation([]);
         }
       }  
     }
-
-
-  
+ 
     // (async () => await handleCityPharmacies(city))();
     handleCityPharmacies(city);
   }, [city, setCityObjs, setIsLoading])
