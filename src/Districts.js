@@ -19,6 +19,7 @@ function Districts({ search, userLocation, setUserLocation }) {
 // empty array (initial value of cityObjs) render it with updated array.
   useEffect(() => {
 
+    // TODO: break down to functions
     const handleCityPharmacies = async (city) => {
       if ((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now())) {
         const dataArray = (JSON.parse(localStorage.getItem(`${city}`))[0]);
