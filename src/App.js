@@ -19,7 +19,7 @@ function App() {
       <SearchBar search={search} setSearch={setSearch} />
       <Routes>
         <Route path='/' element={<Home search={search} setUserLocation={setUserLocation} userLocation={userLocation} />} />
-          <Route path='/districts/:city' element={<Districts search={search} userLocation={userLocation} setUserLocation={setUserLocation} />} />
+        <Route path='/districts/:city' element={<Districts search={search} userLocation={userLocation} setUserLocation={setUserLocation} />} />
       </Routes>
 
     </div>
