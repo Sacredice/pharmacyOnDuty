@@ -21,7 +21,7 @@ function Districts({ search, userLocation, setUserLocation }) {
 
     // TODO: get rid of "|| true" bypass in first if statement
     const handleCityPharmacies = async (city) => {
-      if (((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now()))) {
+      if (((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now())) || true) {
         const dataArray = (JSON.parse(localStorage.getItem(`${city}`))[0]);
         if (userLocation.length !== 0) {
           setCityObjs(getThreeClosest(userLocation, dataArray));
