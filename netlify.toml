@@ -1,4 +1,2 @@
 [build]
-    publish = "src"
-
     functions = "serverless"
