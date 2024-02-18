@@ -57,7 +57,7 @@ function Districts({ search, userLocation, setUserLocation }) {
  
     // (async () => await handleCityPharmacies(city))();
     handleCityPharmacies(city);
-  }, [city, setCityObjs, setIsLoading])
+  }, [city, setCityObjs, setIsLoading, setUserLocation])
   
 
   useEffect(() => {
