@@ -19,9 +19,9 @@ function Districts({ search, userLocation, setUserLocation }) {
 // empty array (initial value of cityObjs) render it with updated array.
   useEffect(() => {
 
-    // TODO: break down to functions
+    // TODO: break down to functions and get rid of "|| true" bypass in first if statement
     const handleCityPharmacies = async (city) => {
-      if ((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now())) {
+      if (((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now())) || true) {
         const dataArray = (JSON.parse(localStorage.getItem(`${city}`))[0]);
         if (userLocation.length !== 0) {
           setCityObjs(getThreeClosest(userLocation, dataArray));
@@ -32,11 +32,8 @@ function Districts({ search, userLocation, setUserLocation }) {
       } else {
         setIsLoading(true);
         try {
-          const response = await axios(`https://api.collectapi.com/health/dutyPharmacy?il=${city}`, {
-            headers: {
-              "authorization": process.env.REACT_APP_COLLECTAPI_KEY,
-              "content-type": "application/json"
-            }     
+          const response = await axios.post(`./.netlify/functions/get_pharmacies`, {
+            body: { city: city }
           });
           console.log(response.data.result);
           if (response.data.success) {
