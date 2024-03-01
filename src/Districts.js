@@ -10,6 +10,7 @@ function Districts({ search, userLocation, setUserLocation }) {
   const { city } = useParams();
   const [cityObjs, setCityObjs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
   const [searchPharmacyResults, setSearchPharmacyResults] = useState([]);
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ function Districts({ search, userLocation, setUserLocation }) {
 // empty array (initial value of cityObjs) render it with updated array.
   useEffect(() => {
 
-    // TODO: get rid of "|| true" bypass in first if statement
+    // TODO: get rid of "|| true" bypass in first if statement. leads error if the localStorage is emtpty for city key
     const handleCityPharmacies = async (city) => {
       if (((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now()))) {
         const dataArray = (JSON.parse(localStorage.getItem(`${city}`))[0]);
@@ -43,11 +44,13 @@ function Districts({ search, userLocation, setUserLocation }) {
               console.log(userLocation);
             }
             setCityObjs(response.data.result.sort(dynamicSort("dist")));
-
+            setFetchError(null);
           }
           
         } catch (err) {
           console.log(`Error: ${err.message}`);
+          console.log(`Error: ${err}`);
+          setFetchError(err.message);
         } finally {
           setIsLoading(false);
           setUserLocation([]);
@@ -78,7 +81,8 @@ function Districts({ search, userLocation, setUserLocation }) {
   return (
     <section className='districtSection'>
       {isLoading && <p className='statusMsg'><b>Liste Yükleniyor...</b></p>}
-      {!isLoading && <ul className='districtList'>
+      {!isLoading && fetchError && <b className='statusMsg' style={{ color: "red"}}>{fetchError}</b>}
+      {!isLoading && !fetchError && <ul className='districtList'>
         {searchPharmacyResults.map((cityObj, key) => (
           <Pharmacy cityObj={cityObj} key={key} />
         ))}

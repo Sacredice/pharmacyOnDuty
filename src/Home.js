@@ -33,6 +33,7 @@ function Home({ search, setUserLocation }) {
       const lat = coordinates.lat;
       const lon = coordinates.lon;
       try {
+        // TODO: delete coordinates accuracy bypass and comment out if else
         const response = await axios(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
         setUserLocation({ ...coordinates, city: response.data.address.province });
         navigate(`/districts/${response.data.address.province}`);
