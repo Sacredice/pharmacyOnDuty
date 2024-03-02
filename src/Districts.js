@@ -34,7 +34,6 @@ function Districts({ search, userLocation, setUserLocation }) {
         setIsLoading(true);
         try {
           const response = await axios.post(`../.netlify/functions/get_pharmacies`, { city: city });
-          console.log(response.data.result);
           if (response.data.success) {
             const sortedData =  response.data.result.sort(dynamicSort("dist"));
             const storageArray = [sortedData, nextShiftTimestamp()];
