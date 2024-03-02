@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
     try {
         const response = await axios.get(`https://api.collectapi.com/health/dutyPharmacy?il=${city}`, {
             headers: {
-              "authorization": "apikey 7kPhSChk7o0n9aDH4DLENR:5wv5KQr6IiwafrRJT3P6u1",
+              "authorization": REACT_APP_COLLECTAPI_KEY,
               "content-type": "application/json"
             }
         });
