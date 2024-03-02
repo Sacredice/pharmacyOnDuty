@@ -20,13 +20,13 @@ function Districts({ search, userLocation, setUserLocation }) {
 // empty array (initial value of cityObjs) render it with updated array.
   useEffect(() => {
 
-    // TODO: get rid of "|| true" bypass in first if statement. leads error if the localStorage is emtpty for city key
     const handleCityPharmacies = async (city) => {
       if (((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now()))) {
         const dataArray = (JSON.parse(localStorage.getItem(`${city}`))[0]);
-        if (userLocation.length !== 0) {
+        console.log("userlocation", userLocation);
+        if (userLocation) {
           setCityObjs(getThreeClosest(userLocation, dataArray));
-          setUserLocation([]);
+          setUserLocation(null);
         } else {
           setCityObjs(dataArray);
         }  
@@ -35,14 +35,15 @@ function Districts({ search, userLocation, setUserLocation }) {
         try {
           const response = await axios.post(`../.netlify/functions/get_pharmacies`, { city: city });
           console.log(response.data.result);
-          console.log(response.data);
           if (response.data.success) {
-            const storageArray = [response.data.result, nextShiftTimestamp()];
+            const sortedData =  response.data.result.sort(dynamicSort("dist"));
+            const storageArray = [sortedData, nextShiftTimestamp()];
             localStorage.setItem(`${city}`, JSON.stringify(storageArray));
             if (userLocation) {
-              console.log(userLocation);
-            }
-            setCityObjs(response.data.result.sort(dynamicSort("dist")));
+              setCityObjs(getThreeClosest(userLocation, sortedData));
+            } else {
+              setCityObjs(sortedData);
+            } 
             setFetchError(null);
           }
           
@@ -52,7 +53,7 @@ function Districts({ search, userLocation, setUserLocation }) {
           setFetchError(err.message);
         } finally {
           setIsLoading(false);
-          setUserLocation([]);
+          setUserLocation(null);
         }
       }  
     }
