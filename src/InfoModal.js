@@ -19,7 +19,7 @@ function InfoModal({ setInfoModal }) {
         <p>(Uygulama listelenen nöbetçi eczanelerin nöbet saati bitimine(Tüm eczanelerin açılış saati) kadar tıklanan iller için browser'a(localStorage) kaydedilir, böylece çevrim dışı durumda nöbet saati bitene kadar kullanılabilir. Nöbet saati geçtiğinde yapılan listelemelerde API'dan güncel liste istenir.)</p>
         </div>}
         {!language && <div className='infoText'>
-        <p>Pharmacies are open on weekdays and Saturdays from 09:00 to 19:00, except for night shifts. Night shift pharmacies are open 24 hours.</p>
+        <p>Pharmacies are open on weekdays and Saturdays from 08:30 to 19:00, except for night shifts. Night shift pharmacies are open 24 hours.</p>
         <br />
         <p>On Sundays and public holidays, there are also pharmacies on duty.</p>
         <br />
