@@ -1,21 +1,21 @@
-const fetch = require("node-fetch");
+require('dotenv').config();
+const axios = require("axios");
 
 const { REACT_APP_COLLECTAPI_KEY } = process.env;
 
 exports.handler = async (event, context) => {
-    const param = JSON.parse(event.body);
+    const params = JSON.parse(event.body);
     const { city } = params;
     try {
-        const response = await fetch(`https://api.collectapi.com/health/dutyPharmacy?il=${city}`, {
+        const response = await axios.get(`https://api.collectapi.com/health/dutyPharmacy?il=${city}`, {
             headers: {
-              "authorization": process.env.REACT_APP_COLLECTAPI_KEY,
+              "authorization": "apikey 7kPhSChk7o0n9aDH4DLENR:5wv5KQr6IiwafrRJT3P6u1",
               "content-type": "application/json"
             }
         });
-        const responseJson = await response.json();
         return {
             statusCode: 200,
-            body: JSON.stringify(responseJson)
+            body: JSON.stringify(response.data)
         };
     } catch (err) {
         return { statusCode: 422, body: err.stack };
