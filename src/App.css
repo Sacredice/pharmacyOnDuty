@@ -176,6 +176,14 @@ body {
   left: 0;
 }
 
+.infoButton {
+  width: 50px;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 
 .location {
   color: deepskyblue;
@@ -204,6 +212,40 @@ body {
   background-color: rgba(255, 255, 255, 0);
 }
 
+.infoModalContainer {
+  padding-top: 8px;
+  width: 100%;
+  height: auto;
+  color: black;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: skyblue;
+  position: fixed;
+  top: 59px;
+  left: 50vh - 50%;
+}
+
+.infoButtonContainer {
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.languageButton {
+  padding: 1px;
+  font-weight: 800;
+  width: 6rem;
+  height: 1.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.infoText {
+  padding: 18px;
+  text-align: left;
+}
+
 @media screen and (min-width: 375px) {
 
   html {
@@ -211,6 +253,11 @@ body {
   }
   
   .goBackButton {
+    top: 0;
+  }
+
+  .infoButton {
+    width: 40px;
     top: 0;
   }
 
@@ -231,6 +278,12 @@ body {
     top: 0;
   }
 
+  .infoButton {
+    width: 60px;
+    position: fixed;
+    top: 0;
+  }
+
   .Nav {
     width: 60%;
     height: 50px;
@@ -242,5 +295,11 @@ body {
 
   .citySection {
     margin-top: 8px;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  .infoModalContainer {
+    width: 706px;
   }
 }
