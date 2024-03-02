@@ -35,15 +35,16 @@ function Home({ search, setUserLocation }) {
       try {
         // TODO: delete coordinates accuracy bypass and comment out if else
         const response = await axios(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
-        setUserLocation({ ...coordinates, city: response.data.address.province });
-        navigate(`/districts/${response.data.address.province}`);
+        const province = response.data.address.province;
+        setUserLocation({ ...coordinates, city: province });
+        navigate(`/districts/${province}`);
         // if (coordinates.accuracy < 750) {
-        //   setUserLocation({ ...coordinates, city: response.data.address.province });
-        //   navigate(`/districts/${response.data.address.province}`);
+        //   setUserLocation({ ...coordinates, city: province });
+        //   navigate(`/districts/${province}`);
         // } else {
         //   alert("UYARI: Cihazın konum hassasiyeti yeterli olmadığından şehrin listesine yönlendiriliyorsunuz!");
         //   setUserLocation([]);
-        //   navigate(`/districts/${response.data.address.province}`);
+        //   navigate(`/districts/${province}`);
         // }  
       } catch (err) {
         console.log(`Error: ${err.message}`);

@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function App() {
   const [search, setSearch] = useState("");
-  const [userLocation, setUserLocation] = useState([]);
+  const [userLocation, setUserLocation] = useState(null);
 
 
 
