@@ -4,9 +4,12 @@ import axios from 'axios';
 import cityList from "./citys";
 import City from './City';
 import { FaHome } from "react-icons/fa";
+import { BsFillInfoSquareFill } from "react-icons/bs";
+import InfoModal from './InfoModal';
 
 function Home({ search, setUserLocation }) {
   const [searchCities, setSearchCities] = useState([]);
+  const [infoModal, setInfoModal] = useState(false);
   const navigate = useNavigate();
   
 
@@ -62,7 +65,10 @@ function Home({ search, setUserLocation }) {
       </ul>
       <div className='findButton' onClick={findUserLocation}><FaHome style={{ marginRight: "14px" }} /><p>En Yakın 3 Eczane</p>
       </div>
+      <BsFillInfoSquareFill title='info' className='infoButton' onClick={() => setInfoModal(!infoModal)} />
+      {infoModal && <InfoModal setInfoModal={setInfoModal} />}
     </section>
+    
   )
 }
 
