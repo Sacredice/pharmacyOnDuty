@@ -33,10 +33,9 @@ function Districts({ search, userLocation, setUserLocation }) {
       } else {
         setIsLoading(true);
         try {
-          const response = await axios.post(`./.netlify/functions/get_pharmacies`, {
-            body: { city: city }
-          });
+          const response = await axios.post(`../.netlify/functions/get_pharmacies`, { city: city });
           console.log(response.data.result);
+          console.log(response.data);
           if (response.data.success) {
             const storageArray = [response.data.result, nextShiftTimestamp()];
             localStorage.setItem(`${city}`, JSON.stringify(storageArray));
