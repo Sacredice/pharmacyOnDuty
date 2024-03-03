@@ -1,4 +1,3 @@
-require('dotenv').config();
 const axios = require("axios");
 
 const { REACT_APP_COLLECTAPI_KEY } = process.env;
