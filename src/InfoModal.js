@@ -7,7 +7,7 @@ function InfoModal({ setInfoModal }) {
     return (
     <div className='infoModalContainer'>
         <div className='infoButtonContainer'>
-            <div className='languageButton' onClick={() => setLanguage(!language)}>{language ? "English" : "Türkçe"}</div>
+            <div className='infoBtn' onClick={() => setLanguage(!language)}>{language ? "English" : "Türkçe"}</div>
         </div>
         
         <h1>{language ? "Bilgilendirme" : "Information"}</h1>
@@ -24,8 +24,10 @@ function InfoModal({ setInfoModal }) {
         <p>On Sundays and public holidays, there are also pharmacies on duty.</p>
         <br />
         <p>The application saves the clicked cities for the listed duty pharmacies to the browser's localStorage until the end of the duty hours (openings of all pharmacies), allowing it to be used offline until the duty hours expire. Updated list fetch with API request, after end of the duty time passed</p>
-        
         </div>}
+        <div className='okBtnContainer'>
+            <div className='infoBtn' onClick={() => setInfoModal(false)}>OK</div>
+        </div>
     </div>
     )
 }
