@@ -98,7 +98,7 @@ body {
   background-image: var(--BG-COLOR-GRADIENT);
   width: max(100%, 320px);
   margin-bottom: 10vh;
-  box-shadow: 4px 1px 5px rgba(0, 0, 0, 0.781);
+  box-shadow: 4px 1px 7px rgba(0, 0, 0, 0.4);
 }
 
 .cityList {
@@ -226,12 +226,13 @@ body {
 }
 
 .infoButtonContainer {
-  padding-left: 10px;
+  padding-left: 1.5rem;
+  padding-top: 0.5rem;
   display: flex;
   justify-content: flex-start;
 }
 
-.languageButton {
+.infoBtn {
   padding: 1px;
   font-weight: 800;
   width: 6rem;
@@ -245,6 +246,15 @@ body {
   padding: 18px;
   text-align: left;
 }
+
+.okBtnContainer {
+  padding-right:1.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
 
 @media screen and (min-width: 375px) {
 
