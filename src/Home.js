@@ -45,7 +45,7 @@ function Home({ search, setUserLocation }) {
           setUserLocation({ ...coordinates, city: province });
           navigate(`/districts/${province}`);
         } else {
-          alert("UYARI: Cihazın konum hassasiyeti yeterli olmadığından şehrin listesine yönlendiriliyorsunuz!");
+          alert("UYARI: Cihazın konum hassasiyeti yeterli olmadığından şehrinizin listesine yönlendirileceksiniz!");
           setUserLocation([]);
           navigate(`/districts/${province}`);
         }  
