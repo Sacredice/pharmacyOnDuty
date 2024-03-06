@@ -21,6 +21,11 @@ function Districts({ search, userLocation, setUserLocation }) {
   useEffect(() => {
 
     const handleCityPharmacies = async (city) => {
+      /**
+       * handleCityPharmacies funcion check nextshift timestamp is passed or not, if not use localStorage data otherwise 
+       * get new data from API. And for both condition check userLocation is null or not, if not setCityObj with all data
+       *  otherwise call getThreeClosest function to filter 3 closest pharmacy and use it to render list. 
+       */ 
       if (((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now()))) {
         const dataArray = (JSON.parse(localStorage.getItem(`${city}`))[0]);
         console.log("userlocation", userLocation);
