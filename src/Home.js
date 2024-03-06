@@ -36,19 +36,19 @@ function Home({ search, setUserLocation }) {
       const lat = coordinates.lat;
       const lon = coordinates.lon;
       try {
-        // TODO: delete coordinates accuracy bypass and comment out if else
         const response = await axios(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
         const province = response.data.address.province;
-        setUserLocation({ ...coordinates, city: province });
-        navigate(`/districts/${province}`);
-        // if (coordinates.accuracy < 750) {
-        //   setUserLocation({ ...coordinates, city: province });
-        //   navigate(`/districts/${province}`);
-        // } else {
-        //   alert("UYARI: Cihazın konum hassasiyeti yeterli olmadığından şehrin listesine yönlendiriliyorsunuz!");
-        //   setUserLocation([]);
-        //   navigate(`/districts/${province}`);
-        // }  
+        // TODO: delete coordinates accuracy bypass and comment out if else
+        // setUserLocation({ ...coordinates, city: province });
+        // navigate(`/districts/${province}`);
+        if (coordinates.accuracy < 1000) {
+          setUserLocation({ ...coordinates, city: province });
+          navigate(`/districts/${province}`);
+        } else {
+          alert("UYARI: Cihazın konum hassasiyeti yeterli olmadığından şehrin listesine yönlendiriliyorsunuz!");
+          setUserLocation([]);
+          navigate(`/districts/${province}`);
+        }  
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
