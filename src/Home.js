@@ -22,7 +22,6 @@ function Home({ search, setUserLocation }) {
 
   const findUserLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
-
       const coordinates = {
         accuracy: position.coords.accuracy,
         lat: position.coords.latitude,
@@ -53,7 +52,6 @@ function Home({ search, setUserLocation }) {
         console.log(`Error: ${err.message}`);
       }
     }
-
   }
 
   return (
