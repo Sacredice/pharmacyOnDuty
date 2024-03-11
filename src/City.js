@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-function City({ city }) {
+function City({ city, setSearch }) {
 
   return (   
     <li className='cityElement'>
-      <Link to={`/districts/${city}`}>
+      <Link to={`/districts/${city}`} onClick={() => setSearch("")}>
         <h1><b>{city}</b></h1>
       </Link>
     </li>
