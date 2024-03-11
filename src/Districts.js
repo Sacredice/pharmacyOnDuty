@@ -6,7 +6,7 @@ import { BsArrowLeftSquareFill } from "react-icons/bs";
 import Pharmacy from './Pharmacy';
 
 
-function Districts({ search, userLocation, setUserLocation }) {
+function Districts({ search, setSearch, userLocation, setUserLocation }) {
   const { city } = useParams();
   const [cityObjs, setCityObjs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -74,6 +74,7 @@ function Districts({ search, userLocation, setUserLocation }) {
       
 
   const handleBack = () => {
+    setSearch("");
     navigate("/");
   }
 

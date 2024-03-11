@@ -7,7 +7,7 @@ import { FaHome } from "react-icons/fa";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import InfoModal from './InfoModal';
 
-function Home({ search, setUserLocation }) {
+function Home({ search, setSearch, setUserLocation }) {
   const [searchCities, setSearchCities] = useState([]);
   const [infoModal, setInfoModal] = useState(false);
   const navigate = useNavigate();
@@ -42,10 +42,12 @@ function Home({ search, setUserLocation }) {
         // navigate(`/districts/${province}`);
         if (coordinates.accuracy < 1000) {
           setUserLocation({ ...coordinates, city: province });
+          setSearch("");
           navigate(`/districts/${province}`);
         } else {
           alert(`UYARI: Cihazın konum hassasiyeti yeterli olmadığından ${province} eczaneleri listesine yönlendirileceksiniz!`);
           setUserLocation(null);
+          setSearch("");
           navigate(`/districts/${province}`);
         }  
       } catch (err) {
@@ -58,7 +60,7 @@ function Home({ search, setUserLocation }) {
     <section className='citySection'>
       <ul className='cityList'>
           {searchCities.map((city, key) => (
-              <City key={key} city={city} />
+              <City key={key} city={city} setSearch={setSearch} />
           ))}
       </ul>
       <div className='findButton' onClick={findUserLocation}><FaHome style={{ marginRight: "14px" }} /><p>En Yakın 3 Eczane</p>
