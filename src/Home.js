@@ -45,7 +45,7 @@ function Home({ search, setUserLocation }) {
           navigate(`/districts/${province}`);
         } else {
           alert(`UYARI: Cihazın konum hassasiyeti yeterli olmadığından ${province} eczaneleri listesine yönlendirileceksiniz!`);
-          setUserLocation([]);
+          setUserLocation(null);
           navigate(`/districts/${province}`);
         }  
       } catch (err) {
