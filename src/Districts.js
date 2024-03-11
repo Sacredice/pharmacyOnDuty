@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
-import { nextShiftTimestamp, dynamicSort, getThreeClosest } from './dataFuncitons';
+import { nextShiftTimestamp, dynamicSort, getThreeClosest } from './utilityFuncitons';
 import { BsArrowLeftSquareFill } from "react-icons/bs";
 import Pharmacy from './Pharmacy';
 
