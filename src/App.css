@@ -21,7 +21,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to left, rgb(121, 121, 201), rgb(194, 194, 194));
+  background-image: linear-gradient(to left, rgb(121, 121, 201), rgb(161, 174, 194));
   
 }
 
@@ -98,7 +98,7 @@ body {
   background-image: var(--BG-COLOR-GRADIENT);
   width: max(100%, 320px);
   margin-bottom: 10vh;
-  box-shadow: 4px 1px 7px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .cityList {

@@ -12,6 +12,7 @@ function SearchBar({ search, setSearch }) {
               placeholder='Listede Ara'
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              autoFocus
               />
           <button>
               <FaSearch className="searchIcon" />
