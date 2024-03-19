@@ -21,7 +21,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to left, rgb(121, 121, 201), rgb(161, 174, 194));
+  background-image: linear-gradient(to left, rgb(142, 142, 158), rgb(193, 196, 202));
   
 }
 
@@ -50,7 +50,7 @@ body {
 
 .header {
   font-size: 16px;
-  color: red;
+  color: rgb(233, 5, 5);
   height: 40px;
   width: 40%;
   min-width: 280px;
