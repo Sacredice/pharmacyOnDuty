@@ -59,7 +59,6 @@ function Districts({ search, setSearch, userLocation, setUserLocation }) {
         }
       }  
     }
-    // (async () => await handleCityPharmacies(city))();
     handleCityPharmacies(city);
   }, [city, setCityObjs, setIsLoading, setUserLocation])
   
