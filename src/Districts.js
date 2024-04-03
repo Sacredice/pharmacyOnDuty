@@ -78,16 +78,18 @@ function Districts({ search, setSearch, userLocation, setUserLocation }) {
   }
 
   return (
-    <section className='districtSection'>
+    <div>
       {isLoading && <p className='statusMsg'><b>Liste Yükleniyor...</b></p>}
       {!isLoading && fetchError && <b className='statusMsg' style={{ color: "red"}}>{fetchError}</b>}
-      {!isLoading && !fetchError && <ul className='districtList'>
-        {searchPharmacyResults.map((cityObj, key) => (
-          <Pharmacy cityObj={cityObj} key={key} />
-        ))}
-      </ul>}
-      <BsArrowLeftSquareFill title='Geri Dön' className='goBackButton' onClick={handleBack} />
-    </section>
+      {!isLoading && !fetchError && <section className='districtSection'>     
+        <ul className='districtList'>
+          {searchPharmacyResults.map((cityObj, key) => (
+            <Pharmacy cityObj={cityObj} key={key} />
+          ))}
+        </ul>
+        <BsArrowLeftSquareFill title='Geri Dön' className='goBackButton' onClick={handleBack} />
+      </section>}
+    </div>
   )
 }
 
