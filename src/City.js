@@ -5,7 +5,7 @@ function City({ city, setSearch }) {
 
   return (   
     <li className='cityElement'>
-      <Link to={`/districts/${city}`} onClick={() => setSearch("")}>
+      <Link to={`/${city}`} onClick={() => setSearch("")}>
         <h1><b>{city}</b></h1>
       </Link>
     </li>
