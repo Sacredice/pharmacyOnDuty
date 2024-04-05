@@ -39,16 +39,16 @@ function Home({ search, setSearch, setUserLocation }) {
         const province = response.data.address.province;
         // TODO: delete coordinates accuracy bypass and comment out if else
         // setUserLocation({ ...coordinates, city: province });
-        // navigate(`/districts/${province}`);
+        // navigate(`/${province}`);
         if (coordinates.accuracy < 1000) {
           setUserLocation({ ...coordinates, city: province });
           setSearch("");
-          navigate(`/districts/${province}`);
+          navigate(`/${province}`);
         } else {
           alert(`UYARI: Cihazın konum hassasiyeti yeterli olmadığından ${province} eczaneleri listesine yönlendirileceksiniz!`);
           setUserLocation(null);
           setSearch("");
-          navigate(`/districts/${province}`);
+          navigate(`/${province}`);
         }  
       } catch (err) {
         console.log(`Error: ${err.message}`);
