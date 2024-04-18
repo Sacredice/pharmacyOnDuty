@@ -21,12 +21,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to left, rgb(142, 142, 158), rgb(193, 196, 202));
+  background-image: var(--BG-COLOR);
   
 }
 
 :root {
-  --BG-COLOR-GRADIENT: linear-gradient(to right,rgb(105, 97, 49) , rgb(88, 82, 73), rgb(36, 36, 83))
+  --LIST-BG-COLOR-GRADIENT: linear-gradient(to right,rgb(105, 97, 49) , rgb(88, 82, 73), rgb(36, 36, 83));
+  --BG-COLOR: linear-gradient(to left, rgb(142, 142, 158), rgb(193, 196, 202));
+  --LIST-BORDER-COLOR: black;
+
 }
 
 #root {
@@ -83,11 +86,13 @@ body {
 .searchBar {
   width: 100%;
   padding-left: 0.4rem;
+  border: 1px solid rgb(0, 0, 0);
 }
 
 .searchBar:focus {
   outline: none;
-  border: 1px solid rgb(194, 194, 194);
+  border: 1px solid rgb(233, 73, 73);
+  box-shadow: 0 2px 5px black;
 }
 
 .searchIcon {
@@ -95,7 +100,7 @@ body {
 }
 
 .citySection {
-  background-image: var(--BG-COLOR-GRADIENT);
+  background-image: var(--LIST-BG-COLOR-GRADIENT);
   width: max(100%, 320px);
   margin-bottom: 10vh;
   box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.4);
@@ -104,7 +109,7 @@ body {
 .cityList {
   width: 100%;
   list-style-type: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--LIST-BORDER-COLOR);
 
 }
 
@@ -114,7 +119,7 @@ body {
 
 .cityElement {
   text-decoration: none;
-  border: 2px solid black;
+  border: 2px solid var(--LIST-BORDER-COLOR);
   border-bottom: 0;
 }
 
@@ -137,15 +142,15 @@ body {
 .districtList {
   width: max(100%, 320px);
   list-style-type: none;
-  background-image: var(--BG-COLOR-GRADIENT);
-  border-bottom: 2px solid black;
+  background-image: var(--LIST-BG-COLOR-GRADIENT);
+  border-bottom: 2px solid var(--LIST-BORDER-COLOR);
 }
 
 .pharmacyElement {
   color: whitesmoke;
   padding: 6px 10px;
   text-align: left;
-  border: 2px solid black;
+  border: 2px solid var(--LIST-BORDER-COLOR);
   border-bottom: 0;
 }
 
