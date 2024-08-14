@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 function InfoModal({ setInfoModal }) {
-    const [language, setLanguage] = useState(true);
+    const [language, setLanguage] = useState(false);
 
     return (
     <div className='infoModalContainer'>
@@ -16,7 +16,11 @@ function InfoModal({ setInfoModal }) {
         <br />
         <p>Pazar ve bayram tatillerine denk gelen günlerde de nöbetçi eczaneler çalışmaktadır.</p>
         <br />
-        <p>(Uygulama listelenen nöbetçi eczanelerin nöbet saati bitimine(Tüm eczanelerin açılış saati) kadar tıklanan iller için browser'a(localStorage) kaydedilir, böylece çevrim dışı durumda nöbet saati bitene kadar kullanılabilir. Nöbet saati geçtiğinde yapılan listelemelerde API'dan güncel liste istenir.)</p>
+        <p>(Uygulama listelenen nöbetçi eczanelerin nöbet saati bitimine(Tüm eczanelerin açılış saati) kadar tıklanan iller için browser'a(localStorage) kaydedilir, böylece çevrim dışı durumda nöbet saati bitene kadar kullanılabilir. Nöbet saati geçtiğinde yapılan listelemelerde API'dan güncel liste istenir.)
+        <br />
+        <br />
+        API Link: <a href="https://collectapi.com/tr/api/health/nobetci-eczane-api" rel='noreferrer' target='_blank'>https://collectapi.com/tr/api/health/nobetci-eczane-api</a>
+        </p>
         </div>}
         {!language && <div className='infoText'>
         <p>Pharmacies are open on weekdays and Saturdays from 08:30 to 19:00, except for night shifts. Night shift pharmacies are open 24 hours.</p>
@@ -25,7 +29,8 @@ function InfoModal({ setInfoModal }) {
         <br />
         <p>The application saves the clicked cities for the listed duty pharmacies to the browser's localStorage until the end of the duty hours (openings of all pharmacies), allowing it to be used offline until the duty hours expire. Updated list fetch with API request, after end of the duty time passed
         <br />
-        API Link: <a href="https://collectapi.com/tr/api/health/nobetci-eczane-api">https://collectapi.com/tr/api/health/nobetci-eczane-api</a>
+        <br />
+        API Link: <a href="https://collectapi.com/tr/api/health/nobetci-eczane-api" rel='noreferrer' target='_blank'>https://collectapi.com/tr/api/health/nobetci-eczane-api</a>
         </p>
         </div>}
         <div className='okBtnContainer'>
