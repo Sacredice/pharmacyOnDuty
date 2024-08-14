@@ -23,7 +23,10 @@ function InfoModal({ setInfoModal }) {
         <br />
         <p>On Sundays and public holidays, there are also pharmacies on duty.</p>
         <br />
-        <p>The application saves the clicked cities for the listed duty pharmacies to the browser's localStorage until the end of the duty hours (openings of all pharmacies), allowing it to be used offline until the duty hours expire. Updated list fetch with API request, after end of the duty time passed</p>
+        <p>The application saves the clicked cities for the listed duty pharmacies to the browser's localStorage until the end of the duty hours (openings of all pharmacies), allowing it to be used offline until the duty hours expire. Updated list fetch with API request, after end of the duty time passed
+        <br />
+        API Link: <a href="https://collectapi.com/tr/api/health/nobetci-eczane-api">https://collectapi.com/tr/api/health/nobetci-eczane-api</a>
+        </p>
         </div>}
         <div className='okBtnContainer'>
             <div className='infoBtn' onClick={() => setInfoModal(false)}>OK</div>
