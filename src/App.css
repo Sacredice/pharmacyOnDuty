@@ -27,7 +27,7 @@ body {
 
 :root {
   --LIST-BG-COLOR-GRADIENT: linear-gradient(to right,rgb(105, 97, 49) , rgb(88, 82, 73), rgb(36, 36, 83));
-  --BG-COLOR: linear-gradient(to left, rgb(142, 142, 158), rgb(193, 196, 202));
+  --BG-COLOR: linear-gradient(to left, rgb(50,101,152), rgb(112, 177, 241));
   --LIST-BORDER-COLOR: black;
 
 }
@@ -92,7 +92,7 @@ body {
 .searchBar:focus {
   outline: none;
   border: 1px solid rgb(233, 73, 73);
-  box-shadow: 0 2px 5px black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .searchIcon {
@@ -103,7 +103,7 @@ body {
   background-image: var(--LIST-BG-COLOR-GRADIENT);
   width: max(100%, 320px);
   margin-bottom: 10vh;
-  box-shadow: 3px 1px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .cityList {
@@ -128,13 +128,13 @@ body {
   justify-content: center;
   align-items: center;
   color: whitesmoke;
-  min-height: 59px;
+  min-height: 48px;
   padding: 10px 0;
 }
 
 .districtSection {
   width: 100%;
-  box-shadow: 4px 1px 5px rgba(0, 0, 0, 0.781);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.301);
   margin-bottom: 10vh;
 }
 
@@ -225,7 +225,7 @@ body {
   color: black;
   border: 1px solid black;
   border-radius: 15px;
-  background-color: skyblue;
+  background-color: whitesmoke;
   position: fixed;
   top: 59px;
   left: 50vh - 50%;
