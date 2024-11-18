@@ -1,4 +1,3 @@
-
 export const nextShiftTimestamp = () => {
     const nowDatetime = new Date();
     // console.log(nowDatetime.getTime(), nowDatetime.toLocaleString());
@@ -26,11 +25,11 @@ export const nextShiftTimestamp = () => {
 
 export function dynamicSort(property) {
     let sortOrder = 1;
-    if(property[0] === "-") {
+    if (property[0] === "-") {
         sortOrder = -1;
         property = property.substr(1);
     }
-    return function (a,b) {
+    return function (a, b) {
         let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
@@ -43,7 +42,7 @@ export const getThreeClosest = (userLocation, data) => {
     } else {
         const distancePropertyAdded = data.map(pharmacyObj => {
             const location = pharmacyObj.loc.split(",");
-            pharmacyObj.distance = ((Number(location[0]) - userLocation.lat) ** 2) 
+            pharmacyObj.distance = ((Number(location[0]) - userLocation.lat) ** 2)
                 + ((Number(location[1]) - userLocation.lon) ** 2);
             return pharmacyObj;
         });
