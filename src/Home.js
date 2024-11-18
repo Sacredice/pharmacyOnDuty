@@ -11,7 +11,7 @@ function Home({ search, setSearch, setUserLocation }) {
   const [searchCities, setSearchCities] = useState([]);
   const [infoModal, setInfoModal] = useState(false);
   const navigate = useNavigate();
-  
+
 
 
   useEffect(() => {
@@ -28,8 +28,7 @@ function Home({ search, setSearch, setUserLocation }) {
         lon: position.coords.longitude
       };
       getCityFromCoords(coordinates);
-    },
-    err => console.log(err));
+    }, err => console.log(err));
 
     const getCityFromCoords = async (coordinates) => {
       const lat = coordinates.lat;
@@ -49,7 +48,7 @@ function Home({ search, setSearch, setUserLocation }) {
           setUserLocation(null);
           setSearch("");
           navigate(`/${province}`);
-        }  
+        }
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -59,16 +58,16 @@ function Home({ search, setSearch, setUserLocation }) {
   return (
     <section className='citySection'>
       <ul className='cityList'>
-          {searchCities.map((city, key) => (
-              <City key={key} city={city} setSearch={setSearch} />
-          ))}
+        {searchCities.map((city, key) => (
+          <City key={key} city={city} setSearch={setSearch} />
+        ))}
       </ul>
       <div className='findButton' onClick={findUserLocation}><FaHome style={{ marginRight: "14px" }} /><p>En Yakın 3 Eczane</p>
       </div>
       <BsFillInfoSquareFill title='info' className='infoButton' onClick={() => setInfoModal(!infoModal)} />
       {infoModal && <InfoModal setInfoModal={setInfoModal} />}
     </section>
-    
+
   )
 }
 
