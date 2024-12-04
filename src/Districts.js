@@ -15,8 +15,8 @@ function Districts({ search, setSearch, userLocation, setUserLocation }) {
   const navigate = useNavigate();
 
 
-// 2 useEffect used to prevent render component before setCityObj(arrayWithData) updated cityObjs and instead render page with
-// empty array (initial value of cityObjs) render it with updated array.
+  // 2 useEffect used to prevent render component before setCityObj(arrayWithData) updated cityObjs and instead render page with
+  // empty array (initial value of cityObjs) render it with updated array.
   useEffect(() => {
 
     const handleCityPharmacies = async (city) => {
@@ -24,8 +24,8 @@ function Districts({ search, setSearch, userLocation, setUserLocation }) {
        * handleCityPharmacies funcion check nextshift timestamp is passed or not, if not use localStorage data otherwise 
        * get new data from API. And for both condition check userLocation is null or not, if not setCityObj with all data
        *  otherwise call getThreeClosest function to filter 3 closest pharmacy and use it to render list. 
-       */ 
-      if (((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now()))) {
+       */
+      if ((localStorage.getItem(`${city}`)) && ((JSON.parse(localStorage.getItem(`${city}`))[1]) > Date.now())) {
         const dataArray = (JSON.parse(localStorage.getItem(`${city}`))[0]);
         console.log("userlocation", userLocation);
         if (userLocation) {
@@ -33,22 +33,24 @@ function Districts({ search, setSearch, userLocation, setUserLocation }) {
           setUserLocation(null);
         } else {
           setCityObjs(dataArray);
-        }  
+        }
       } else {
         setIsLoading(true);
         try {
           const response = await axios.post(`../.netlify/functions/get_pharmacies`, { city: city });
           if (response.data.success) {
-            const sortedData =  response.data.result.sort(dynamicSort("dist"));
+            const sortedData = response.data.result.sort(dynamicSort("dist"));
             const storageArray = [sortedData, nextShiftTimestamp()];
             localStorage.setItem(`${city}`, JSON.stringify(storageArray));
             if (userLocation) {
               setCityObjs(getThreeClosest(userLocation, sortedData));
             } else {
               setCityObjs(sortedData);
-            } 
+            }
             setFetchError(null);
-          }         
+          } else {
+            setFetchError("Server isteği reddedildi. Server hizmet dışı veya API aylık 100 istek limiti aşılmış olabilir!")
+          }
         } catch (err) {
           console.log(`Error: ${err.message}`);
           console.log(`Error: ${err}`);
@@ -57,20 +59,20 @@ function Districts({ search, setSearch, userLocation, setUserLocation }) {
           setIsLoading(false);
           setUserLocation(null);
         }
-      }  
+      }
     }
     handleCityPharmacies(city);
   }, [city, setCityObjs, setIsLoading, setUserLocation])
-  
+
 
   useEffect(() => {
-    const filteredPharmacies = cityObjs.filter((pharmacy) => 
-    (((pharmacy.dist).toLocaleLowerCase()).includes(search.toLocaleLowerCase())) ||
-    ((pharmacy.address).toLocaleLowerCase()).includes(search.toLocaleLowerCase())
+    const filteredPharmacies = cityObjs.filter((pharmacy) =>
+      (((pharmacy.dist).toLocaleLowerCase()).includes(search.toLocaleLowerCase())) ||
+      ((pharmacy.address).toLocaleLowerCase()).includes(search.toLocaleLowerCase())
     );
-    setSearchPharmacyResults(filteredPharmacies);  
+    setSearchPharmacyResults(filteredPharmacies);
   }, [search, cityObjs, setCityObjs, setIsLoading])
-      
+
 
   const handleBack = () => {
     setSearch("");
@@ -80,15 +82,15 @@ function Districts({ search, setSearch, userLocation, setUserLocation }) {
   return (
     <div>
       {isLoading && <p className='statusMsg'><b>Liste Yükleniyor...</b></p>}
-      {!isLoading && fetchError && <b className='statusMsg' style={{ color: "red"}}>{fetchError}</b>}
-      {!isLoading && !fetchError && <section className='districtSection'>     
+      {!isLoading && fetchError && <b className='statusMsg' style={{ color: "red" }}>{fetchError}</b>}
+      {!isLoading && !fetchError && <section className='districtSection'>
         <ul className='districtList'>
           {searchPharmacyResults.map((cityObj, key) => (
             <Pharmacy cityObj={cityObj} key={key} />
           ))}
         </ul>
-        <BsArrowLeftSquareFill title='Geri Dön' className='goBackButton' onClick={handleBack} />
       </section>}
+      <BsArrowLeftSquareFill title='Geri Dön' className='goBackButton' onClick={handleBack} />
     </div>
   )
 }
